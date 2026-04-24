@@ -15,7 +15,68 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+    <style>
+      .hero-panel {
+        gap: 1rem;
+      }
+
+      .hero-feature-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: calc(var(--radius) - 6px);
+        border: 1px solid var(--border);
+      }
+
+      .card-image {
+        padding: 0;
+        place-items: stretch;
+        overflow: hidden;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform var(--ease);
+      }
+
+      .card:hover .card-image img {
+        transform: scale(1.035);
+      }
+
+      .event-details {
+        list-style: none;
+        padding: 0;
+        margin: 0.9rem 0 1.1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .event-details li + li {
+        margin-top: 0.28rem;
+      }
+
+      .episode-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1rem;
+      }
+
+      .episode-actions .play-link {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .source-note {
+        margin-top: 1.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -36,7 +97,7 @@
       <section id="inicio" class="hero reveal">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="kicker">Podcast</p>
+            <p class="kicker">Videopódcast</p>
             <h1>De perdidos al río</h1>
             <p class="tagline">“Esto nos lo cancelan”</p>
             <p class="lead">
@@ -44,18 +105,28 @@
               con fundamentos.
             </p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="#plataformas">Escuchar el podcast</a>
-              <a class="btn btn-secondary" href="#episodios">Ver episodios</a>
+              <a class="btn btn-primary" href="#episodios">Ver episodios</a>
+              <a class="btn btn-secondary" href="#plataformas">Dónde escucharlo</a>
             </div>
           </div>
-          <aside class="hero-panel" aria-label="Destacado del episodio">
-            <p class="panel-label">Último tema</p>
-            <h2>¿Nos molesta más el desacuerdo que la mentira?</h2>
+          <aside class="hero-panel" aria-label="Próxima grabación destacada">
+            <img
+              class="hero-feature-image"
+              src="https://vidaumh.umh.es/files/2025/10/BANNER-DE-PERDIDOS-AL-RIO-BANNER-1.jpg"
+              alt="Banner del videopódcast De perdidos al río"
+            />
+            <p class="panel-label">Próxima grabación</p>
+            <h2>María Esclapez: terapia de pareja y sexología</h2>
             <p>
-              Un episodio para hablar de polarización, redes y la comodidad de
-              rodearnos solo de quienes piensan igual.
+              Jueves 7 de mayo, de 17:30 a 19:00 horas, en la Cinemateca del
+              edificio La Valona, campus de Elche.
             </p>
-            <button class="play-pill" type="button">▶ Reproducir adelanto</button>
+            <a
+              class="play-pill"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScZhw0y5I1Ir0ZyzCNj0fzjOW2dgR9-2bApd6hpNl7jsFJAVw/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Inscribirme</a>
           </aside>
         </div>
       </section>
@@ -80,15 +151,194 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <p class="section-label">Lista editable</p>
-              <h2>Últimos episodios</h2>
+              <p class="section-label">Programación</p>
+              <h2>Episodios y grabaciones</h2>
             </div>
             <p class="muted">
-              Los episodios se generan desde JavaScript para añadir nuevos
-              capítulos fácilmente.
+              Actividades gratuitas dirigidas a la sociedad en general.
             </p>
           </div>
-          <div id="episodes-list" class="cards" aria-live="polite"></div>
+
+          <div id="episodes-list" class="cards" aria-live="polite">
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/02/RRSS-DPR-CRISTINA-SALAR.jpg"
+                  alt="Cartel del videopódcast con Cristina Salar"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Fisioterapia del suelo pélvico</h3>
+                <p>
+                  Con Cristina Salar. Una conversación sobre salud, bienestar,
+                  prevención, autocuidado y tratamiento de las disfunciones más
+                  comunes del suelo pélvico.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> miércoles 18 de febrero</li>
+                  <li><strong>Hora:</strong> 10:00 a 11:30 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://vidaumh.umh.es/deperdidosalrio/" target="_blank" rel="noopener noreferrer">Más información</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/03/rrss-AITANA-1.jpg"
+                  alt="Cartel del videopódcast con Aitana Tresáncoras"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>¿Es normal que mi deseo no sea como el de los demás?</h3>
+                <p>
+                  Con Aitana Tresáncoras. Deseo sexual, expectativas de
+                  rendimiento, mitos, comparaciones y presión social en la
+                  vivencia de la sexualidad.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> jueves 5 de marzo</li>
+                  <li><strong>Hora:</strong> 11:00 a 12:30 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://vidaumh.umh.es/deperdidosalrio/" target="_blank" rel="noopener noreferrer">Más información</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/02/RRSS-DPR-MARTA-MORAND.jpg"
+                  alt="Cartel del videopódcast con Marta Morand"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Sexualidad digital y expectativas poco realistas</h3>
+                <p>
+                  Con Marta Morand. Pornografía, redes sociales, modelos
+                  irreales de sexualidad, comparación constante, autoestima,
+                  comunicación y placer.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> lunes 23 de marzo</li>
+                  <li><strong>Hora:</strong> 11:00 a 12:30 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdzurdxzKAxZYE-A8MWNd6a99tzWpZEOUB-YStxT_XedoPD0Q/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Inscribirme</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/03/DPR-VICTOR-1.jpg"
+                  alt="Cartel del videopódcast con Víctor Rodríguez"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Plantas maestras y psicodélicos en el tratamiento de las adicciones</h3>
+                <p>
+                  Con Víctor Rodríguez. Evidencia científica, mecanismos
+                  psicológicos y neurobiológicos, beneficios potenciales,
+                  límites, riesgos y retos éticos y clínicos.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> miércoles 1 de abril</li>
+                  <li><strong>Hora:</strong> 11:00 a 12:00 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://forms.gle/R4UpoPAUhk1xGXFj8" target="_blank" rel="noopener noreferrer">Inscribirme</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/03/RRSS-DPRLAURA-CAMARA-3.jpg"
+                  alt="Cartel del videopódcast con Laura Cámara"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Salud sexual</h3>
+                <p>
+                  Con Laura Cámara. Hormonas, cuerpo, sexualidad, mitos sobre la
+                  anatomía genital, higiene íntima, infecciones de transmisión
+                  sexual, prevención y autocuidado.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> jueves 16 de abril</li>
+                  <li><strong>Hora:</strong> 17:00 a 18:30 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://docs.google.com/forms/d/e/1FAIpQLScCnuj1rYtqo5ULQwEIZf_c6fPikea4KAdl8rWbBWm2BC1imw/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Inscribirme</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/02/RRSS-DPR-MARIA-ESCLAPEZ.jpg"
+                  alt="Cartel del videopódcast con María Esclapez"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Terapia de pareja y sexología</h3>
+                <p>
+                  Con María Esclapez. Dependencia emocional, rupturas,
+                  infidelidad, vínculos saludables, confianza, comunicación y
+                  gestión de conflictos en la pareja.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> jueves 7 de mayo</li>
+                  <li><strong>Hora:</strong> 17:30 a 19:00 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://docs.google.com/forms/d/e/1FAIpQLScZhw0y5I1Ir0ZyzCNj0fzjOW2dgR9-2bApd6hpNl7jsFJAVw/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Inscribirme</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-image">
+                <img
+                  src="https://vidaumh.umh.es/files/2026/02/RRSS-DPR-MAGDA-NAVARRO.jpg"
+                  alt="Cartel del videopódcast con Magda Navarro"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Anticonceptivos, fármacos y salud sexual</h3>
+                <p>
+                  Con Magda Navarro. Métodos anticonceptivos, eficacia, criterios
+                  de elección, medicamentos que pueden influir en la respuesta
+                  sexual, efectos secundarios e interacciones.
+                </p>
+                <ul class="event-details">
+                  <li><strong>Fecha:</strong> lunes 18 de mayo</li>
+                  <li><strong>Hora:</strong> 11:00 a 12:30 horas</li>
+                  <li><strong>Lugar:</strong> Cinemateca, edif. La Valona</li>
+                  <li><strong>Precio:</strong> gratuito</li>
+                </ul>
+                <a class="play-link" href="https://docs.google.com/forms/d/e/1FAIpQLSemhjZIFaWFEdP5LKJU131Gm0X86nAjxClTQjfg3115qaGceA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Inscribirme</a>
+              </div>
+            </article>
+          </div>
+
+          <p class="source-note">
+            Información e imágenes tomadas de la programación pública de Vida UMH.
+          </p>
         </div>
       </section>
 
@@ -112,7 +362,6 @@
           <p class="section-label">Escúchanos donde quieras</p>
           <h2>Plataformas</h2>
           <div class="platforms">
-            <!-- Edita estos enlaces con tus URLs reales -->
             <a class="platform-btn" href="#" aria-label="Escuchar en Spotify">Spotify</a>
             <a class="platform-btn" href="#" aria-label="Escuchar en Apple Podcasts">Apple Podcasts</a>
             <a class="platform-btn" href="#" aria-label="Ver en YouTube">YouTube</a>
@@ -127,7 +376,7 @@
           <p class="section-label">¿Te atreves?</p>
           <h2>Entra en la conversación</h2>
           <p>Dale al play. Puede que no estés de acuerdo. Mejor.</p>
-          <a class="btn btn-primary" href="#plataformas">Escuchar ahora</a>
+          <a class="btn btn-primary" href="#episodios">Ver programación</a>
         </div>
       </section>
     </main>
@@ -141,14 +390,14 @@
         <div>
           <p class="footer-title">Redes sociales</p>
           <ul>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">TikTok</a></li>
-            <li><a href="#">X / Twitter</a></li>
+            <li><a href="https://www.instagram.com/vidaumh/?hl=es" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@universidadmh" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+            <li><a href="https://vidaumh.umh.es/deperdidosalrio/" target="_blank" rel="noopener noreferrer">Vida UMH</a></li>
           </ul>
         </div>
         <div>
           <p class="footer-title">Contacto</p>
-          <a href="mailto:hola@deperdidosalrio.com">hola@deperdidosalrio.com</a>
+          <a href="mailto:vidaumh@umh.es">vidaumh@umh.es</a>
           <div class="legal-links">
             <a href="#">Aviso legal</a>
             <a href="#">Privacidad</a>
@@ -157,6 +406,26 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealElements.forEach(element => revealObserver.observe(element));
+      } else {
+        revealElements.forEach(element => element.classList.add('is-visible'));
+      }
+    </script>
   </body>
 </html>
