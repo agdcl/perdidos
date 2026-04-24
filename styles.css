@@ -1,15 +1,16 @@
 :root {
-  --bg: #0e0e11;
-  --surface: #17171c;
-  --surface-soft: #20202a;
-  --text: #f2f0e8;
-  --muted: #bcb7ab;
-  --accent: #ff5a36;
-  --accent-2: #ffd84d;
-  --border: rgba(255, 255, 255, 0.12);
+  --bg: #f5efe3;
+  --surface: #fffaf2;
+  --surface-soft: #efe2d0;
+  --text: #241c16;
+  --muted: #716356;
+  --accent: #b75b3d;
+  --accent-2: #8b5e34;
+  --border: rgba(80, 58, 38, 0.16);
   --radius: 20px;
   --container: min(1120px, 92vw);
   --ease: 240ms ease;
+  --shadow: rgba(69, 49, 35, 0.12);
 }
 
 * {
@@ -24,7 +25,9 @@ body {
 
 body {
   font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at top right, #1a1a24, var(--bg) 45%);
+  background:
+    radial-gradient(circle at top right, #eadbc8, var(--bg) 45%),
+    var(--bg);
   color: var(--text);
   line-height: 1.5;
 }
@@ -44,7 +47,7 @@ a {
   top: 0;
   z-index: 30;
   backdrop-filter: blur(12px);
-  background: rgba(14, 14, 17, 0.72);
+  background: rgba(255, 250, 242, 0.82);
   border-bottom: 1px solid var(--border);
 }
 
@@ -65,6 +68,7 @@ h2 {
 
 .brand {
   font-weight: 800;
+  color: var(--text);
 }
 
 .nav-list {
@@ -78,7 +82,7 @@ h2 {
 }
 
 .nav-list a:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .section {
@@ -114,11 +118,13 @@ h2 {
 h1 {
   font-size: clamp(2.2rem, 6vw, 5rem);
   margin: 0.3rem 0;
+  color: var(--text);
 }
 
 h2 {
   font-size: clamp(1.8rem, 4vw, 3rem);
   margin: 0.2rem 0 0.6rem;
+  color: var(--text);
 }
 
 .tagline {
@@ -149,7 +155,7 @@ h2 {
   justify-content: center;
   padding: 0.9rem 1.35rem;
   font-weight: 700;
-  transition: transform var(--ease), box-shadow var(--ease), background var(--ease);
+  transition: transform var(--ease), box-shadow var(--ease), background var(--ease), color var(--ease), border-color var(--ease);
 }
 
 .btn:hover {
@@ -158,21 +164,24 @@ h2 {
 
 .btn-primary {
   background: var(--accent);
-  color: #1a0d08;
-  box-shadow: 0 12px 30px rgba(255, 90, 54, 0.35);
+  color: #fffaf2;
+  box-shadow: 0 12px 30px rgba(183, 91, 61, 0.26);
 }
 
 .btn-primary:hover {
-  background: #ff704f;
+  background: #98462f;
 }
 
 .btn-secondary {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 250, 242, 0.62);
+  color: var(--text);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border-color: rgba(183, 91, 61, 0.42);
+  color: var(--accent);
 }
 
 .hero-panel,
@@ -180,7 +189,8 @@ h2 {
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(160deg, var(--surface), #101016 70%);
+  background: linear-gradient(160deg, var(--surface), #f1e4d2 100%);
+  box-shadow: 0 20px 55px var(--shadow);
 }
 
 .hero-panel {
@@ -188,6 +198,10 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.hero-panel p {
+  color: var(--muted);
 }
 
 .panel-label {
@@ -198,18 +212,21 @@ h2 {
 
 .play-pill {
   margin-top: 1rem;
-  border: 0;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-soft);
   color: var(--text);
   font: inherit;
   font-weight: 700;
   padding: 0.72rem 1rem;
   cursor: pointer;
+  transition: background var(--ease), color var(--ease), transform var(--ease);
 }
 
 .play-pill:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: var(--accent);
+  color: #fffaf2;
+  transform: translateY(-2px);
 }
 
 .split {
@@ -231,17 +248,20 @@ h2 {
 
 .card {
   overflow: hidden;
-  transition: transform var(--ease), border-color var(--ease);
+  transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.26);
+  border-color: rgba(183, 91, 61, 0.34);
+  box-shadow: 0 24px 70px rgba(69, 49, 35, 0.16);
 }
 
 .card-image {
   aspect-ratio: 16 / 9;
-  background: linear-gradient(130deg, #2a2a38, #111117 68%);
+  background:
+    linear-gradient(130deg, #dcc7ad, #f7efe2 72%);
+  color: #3a2a1f;
   display: grid;
   place-items: end start;
   padding: 1rem;
@@ -253,6 +273,10 @@ h2 {
   padding: 1rem;
 }
 
+.card-content p {
+  color: var(--muted);
+}
+
 .meta {
   display: flex;
   justify-content: space-between;
@@ -262,8 +286,12 @@ h2 {
 }
 
 .play-link {
-  color: var(--accent-2);
+  color: var(--accent);
   font-weight: 700;
+}
+
+.play-link:hover {
+  color: #98462f;
 }
 
 .platforms {
@@ -276,15 +304,23 @@ h2 {
 .platform-btn {
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--surface-soft);
+  background: var(--surface);
+  color: var(--text);
   padding: 0.75rem 1.1rem;
   font-weight: 700;
-  transition: background var(--ease), transform var(--ease);
+  transition: background var(--ease), color var(--ease), transform var(--ease), border-color var(--ease);
+  box-shadow: 0 10px 26px rgba(69, 49, 35, 0.08);
 }
 
 .platform-btn:hover {
   transform: translateY(-2px);
-  background: #2a2a35;
+  background: var(--accent);
+  color: #fffaf2;
+  border-color: var(--accent);
+}
+
+.cta-final {
+  background: linear-gradient(180deg, var(--bg), #eadbc8);
 }
 
 .cta-block {
@@ -292,10 +328,23 @@ h2 {
   text-align: center;
 }
 
+.cta-block p {
+  color: var(--muted);
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 2rem 0 2.3rem;
-  color: var(--muted);
+  background: #2a2018;
+  color: #d9ccbd;
+}
+
+.site-footer a {
+  color: #fffaf2;
+}
+
+.site-footer a:hover {
+  color: #e8b091;
 }
 
 .footer-grid {
@@ -304,7 +353,7 @@ h2 {
 
 .footer-title,
 .brand-footer {
-  color: var(--text);
+  color: #fffaf2;
   font-weight: 700;
 }
 
